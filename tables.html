@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tables</title>
+</head>
+
+<body>
+
+    <script>
+
+        // Table of 3.....................................
+
+        // let n = prompt("Entrer table nbr");
+        // for (let i = 1; i <= 10; i++){
+        //     let r = n*i
+        //     console.log('${n} * ${i}=',r)
+
+        // }
+
+        // Table of 1-20...........................................
+
+        // for (let i = 1; i <= 20; i++){
+        //     for (let j = 1; j <= 10; j++){
+        //         console.log(i*j)
+        //     }
+        //     console.log("\n")
+        // }
+
+
+        // print Reverse numbers ....................................
+        // for (let i = 0; i <=10; i++) {
+
+        //     console.log(i)
+
+        // }
+        // for (let j = 10; j >= 0; j--) {
+        //     console.log(j)
+
+
+        // } 
+
+        // Sum of digit of a nbr....................................
+
+        // let number = prompt("enter the Number")
+        // function sumofDigits(number){
+        //     let sum = 0;
+        //     while (number > 0){
+        //         sum += number % 10;
+        //         number = Math.floor(number/10);
+        //     }
+        //     return sum;
+        // }
+        // const result = sumofDigits(number);
+        // console.log(result)
+
+        // check number is palidrom or not............................
+
+        // let number = prompt("Enther the Number")
+        // function isPalidrome(number){
+        //     const temp = number;
+        //     const reversednumber = temp.split('').reverse().join('');
+        //     return temp === reversednumber;
+        // }
+        // if(isPalidrome(number)){
+        //     console.log(number,'is a polidrome');
+        // }else{
+        //     console.log(number,'is not a polidrome');
+        // }
+
+        // check number is armstrong or not............................
+
+        // let sum = 0;
+        // let number = prompt("enter the number")
+        // let temp = number;
+
+
+        // while(temp>0){
+        //     let remainder = temp%10;
+        //     sum += remainder*remainder*remainder;
+        //     temp = parseInt(temp/10);
+        // }
+        // if(sum == number){
+        //     console.log(number,'is an Armstrong number.')
+        // }else{
+        //     console.log(number,'is not an Armstrong number.')
+        // }
+
+        // prime numbers in functions...........................................
+
+        function isprime(number) {
+
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+
+        let number = prompt("enter a number")
+        if (isprime(number)) {
+            console.log(number, "is a prime")
+        } else {
+            console.log(number, 'is not a prime')
+        }
+
+
+    </script>
+</body>
+
+</html>
