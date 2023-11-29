@@ -84,14 +84,6 @@ let v1 = new Batsman("Ms", 35, "india", 10000, 100)
 v1.caluculateAverageRuns()
 v1.showInfo()
 
-
-
-
-
-
-
-
-
 let v2 = new Bowler(33, "shami", "india", 35, 100)
 v2.caluculateAverageWickets()
 v2.showInfo()

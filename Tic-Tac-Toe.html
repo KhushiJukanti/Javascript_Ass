@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            width: 304px;
+            margin-left: 600px;
+        }
+        #game{
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 1px;
+            border: 1px solid black;
+        }
+        .cell{
+            background-color: lightgrey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .win{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe Game</h1>
+    <div id="game"></div>
+    <button onclick="resretGame()">Reset Game</button>
+    <h2 id="message"></h2>
+</body>
+<script>
+    let gameState = ["","","","","","","","",""];
+    let currentPlayer = "X";
+    let winningCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+    const game = document.getElementById("game");
+    const message = document.getElementById("message");
+
+    for (let i=0;i<9;i++){
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
+        cell.textContent = gameState[i];
+        cell.setAttribute("id", "cell-" + i);
+        cell.addEventListener("click", () => handleClick(i));
+        game.appendChild(cell);
+    }
+    function handleClick(index){
+        if(gameState[index] === "" && !checkwin(currentPlayer)){
+            gameState[index] = currentPlayer;
+            document.getElementById("cell-" + index).textContent=currentPlayer;
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+            checkwin(currentPlayer);
+        }
+    }
+    function checkwin(Player){
+        for(let combination of winningCombinations){
+            if(
+                gameState[combination[0]] === Player &&
+                gameState[combination[1]] === Player &&
+                gameState[combination[2]] === Player 
+            ){
+                document.getElementById("cell-" + combination[0]).classList.add("win");
+                document.getElementById("cell-" + combination[1]).classList.add("win");
+                document.getElementById("cell-" + combination[2]).classList.add("win");
+                message.textContent = Player + "wins!";
+                return true;
+            }
+        }
+        return false;
+    }
+    function Resetgame(){
+        for (let i=0;i<9;i++){
+            gameState[i] = "";
+            document.getElementById("cell-" +i).textContent = "";
+            document.getElementById("cell-" +i).classList.remove("win");
+        }
+        currentPlayer = "X"
+        message.textContent = "";
+    }
+</script>
+</html> 
