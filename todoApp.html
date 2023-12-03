@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            box-shadow: 0 5px 10px rgba(0, 1, 1, 0.1);
+            background-color: #f9fbfe;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            /* margin-bottom: 10px; */
+            border: solid black 1px;
+            padding: 10px;
+            background-color: lightgrey;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            border-radius: 25px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>To Do List</h1>
+        <input type="text" id="task-input" placeholder="Add item...">
+        <button id="add-task-btn">Add</button>
+
+        <ul id="task-list"></ul>
+    </div>
+
+    <script>
+        document.getElementById('add-task-btn').addEventListener('click', addTask);
+
+        function addTask() {
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value.trim();
+
+            if (taskText) {
+                const taskList = document.getElementById('task-list');
+
+                const listItem = document.createElement('li');
+                listItem.textContent = taskText;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', deleteTask);
+
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.addEventListener('click', editTask);
+
+                listItem.appendChild(deleteButton);
+                listItem.appendChild(editButton);
+                taskList.appendChild(listItem);
+
+                taskInput.value = '';
+            }
+        }
+
+        function deleteTask(e) {
+            const listItem = e.target.parentElement;
+            const taskList = document.getElementById('task-list');
+            taskList.removeChild(listItem);
+        }
+
+        function editTask(e) {
+            const listItem = e.target.parentElement;
+            const taskInput = document.getElementById('task-input');
+
+            taskInput.value = listItem.textContent;
+            listItem.textContent = '';
+
+            const deleteButton = listItem.querySelector('button');
+            deleteButton.remove();
+
+            const editButton = listItem.querySelector('button');
+            editButton.remove();
+
+            const saveButton = document.createElement('button');
+            saveButton.textContent = 'Save';
+            saveButton.addEventListener('click', saveEdit);
+
+            listItem.appendChild(saveButton);
+        }
+
+        function saveEdit(e) {
+            const listItem = e.target.parentElement;
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value.trim();
+
+            if (taskText) {
+                listItem.textContent = taskText;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', deleteTask);
+
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.addEventListener('click', editTask);
+
+                listItem.appendChild(deleteButton);
+                listItem.appendChild(editButton);
+
+                taskInput.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
