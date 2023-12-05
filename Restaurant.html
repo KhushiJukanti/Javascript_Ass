@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+
+
+        }
+        h1{
+            color: #262626;
+            background-color: #f4f4f4;
+            text-decoration: none;
+            border-radius: 50px;
+            width: 600px;
+            
+            margin-left: 400px;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            background-image: url("https://th.bing.com/th/id/OIP.HnmRcJHagRFLK94E_PcSPQAAAA?rs=1&pid=ImgDetMain");
+            height: 100vh;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+            }
+        }
+
+        a {
+            color: #262626;
+            background-color: #f4f4f4;
+            text-decoration: none;
+            border-radius: 5px;
+            
+
+        }
+        img{
+            float: left;
+            width: 100%;
+            gap: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to Online FoodShop</h1>
+        <p><a href="#">Order Now!</a></p>
+        
+
+
+        <section class="menu">
+            <h2><a href="#">Cocktail Products</a></h2>
+            <ul>
+                <li><a href="#">Honey Badger Blitz - $5.99</a></li>
+                <li><a href="#">Betty's E$cstasy shot - $7.99</a></li>
+                <li><a href="#">Smirking Priest Gimlet - $9.99</a></li>
+            </ul>
+            <h2><a href="#">Specials</a></h2>
+            <ul>
+                <li><a href="#">Chicken Special 1 - $3.99</a></li>
+                <li><a href="#">Mutton Special 2 - $4.99</a></li>
+                <li><a href="#">Prawns Special 3 - $5.99</a></li>
+            </ul>
+        </section>
+        <section class="menu">
+            <img src="https://th.bing.com/th/id/OIP.ToIq395Oshw3-nq64DSBzQHaE8?rs=1&pid=ImgDetMain" alt="Khushi" style="height: 300px; width: 300px; border-radius: 10px; border: solid 2px #f4f4f4;">
+            <img src="https://norecipes.com/wp-content/uploads/2017/05/chicken-biryani-11.jpg" alt="khushi" style="height: 300px; width: 300px; border-radius: 10px; border: solid 2px #f4f4f4;">
+        </section>
+        
+        
+    </header>
+    <footer>
+        <p>&copy; 2023 Online FoodShop. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
