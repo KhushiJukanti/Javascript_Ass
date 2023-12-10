@@ -71,3 +71,25 @@ function displayToDos() {
 
 }
 addbtn.addEventListener("click", addTodoItem)
+
+// interview.............................
+
+
+// for(let i=0;i<4;i++){
+//     console.log(i);
+// }
+// console.log("here2",i)
+// for(var j=0;j<4;j++){
+//     console.log(j)
+// }
+// console.log("here2",j)
+
+// function greet2(){
+//     console.log(this);
+// }
+// let greet = ()=>{
+//     console.log(this);
+// }
+// greet()
+// greet2()
+
