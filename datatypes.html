@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datatypes in Js</title>
+</head>
+<body>
+    <script>
+        // String data type...
+        var name="Khushi"
+        var paragraph = "Hi iam khushi jukanti"
+        console.log(typeof name)
+        console.log(typeof paragraph)
+
+        // Number data type...
+        var num = 123
+        var $ = 333
+        console.log(typeof num)
+        console.log(typeof $)
+
+        // boolean data type...
+        var ispaid = true;
+        var ismarried = false;
+        console.log(typeof ispaid)
+        console.log(typeof ismarried)
+
+        // undifined data type...
+        var age;
+        console.log(typeof age)
+        console.log(age)
+
+        // Null data type...
+        var name=null; //0 or ~
+        console.log(name)
+        console.log(typeof null) // it will written as a obj
+
+        // obj data type...
+        var user = {
+            name : "Khushi",
+            age : 21,
+            email: "Khushijukanti@gmail.com",
+            phone: 127489738
+        }
+        console.log(user)
+        console.log(typeof user)
+        document.write("user info")
+        document.write("<br/>")
+        document.write("name is:",user.name)
+
+        // array data type...
+        let ages=[20,23,34,45]
+        console.log(ages)
+        console.log(typeof ages)
+        console.log(ages[0])
+        console.log(ages[1])
+        console.log(ages[2])
+        console.log(ages[3])
+
+        //function data type...
+        function printhello(){
+            console.log('"hello!!!"')
+        }
+        function greet(){
+            console.log('Hiii iam khushi')
+        }
+            
+        printhello();
+        printhello();
+        printhello();
+        console.log(typeof printhello)
+        greet()
+        greet()
+        
+    </script>
+</body>
+</html>

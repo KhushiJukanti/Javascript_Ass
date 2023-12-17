@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Static Accordiation</title>
+
+    <style>
+        .accordion {
+            width: 100%;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .accordion-item-title {
+            background-color: #eee;
+            padding: 10px 15px;
+            display: block;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .accordion-item-title:hover {
+            background-color: #ddd;
+        }
+
+        .accordion-item-icon {
+            margin-left: 5px;
+        }
+
+        .accordion-item-description {
+            padding: 10px 15px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Course Details.</h1>
+    <div class="accordion">
+        <div class="accordion-item">
+            <button class="accordion-item-title">
+                Title 1
+                <i class="accordion-item-icon">+</i>
+            </button>
+            <div class="accordion-item-description">
+                <p>Description 1</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-item-title">
+                Title 2
+                <i class="accordion-item-icon">+</i>
+            </button>
+            <div class="accordion-item-description">
+                <p>Description 2</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-item-title">
+                Title 3
+                <i class="accordion-item-icon">+</i>
+            </button>
+            <div class="accordion-item-description">
+                <p>Description 3</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.accordion-item').forEach(item => {
+            item.querySelector('.accordion-item-title').addEventListener('click', () => {
+                item.querySelector('.accordion-item-description').style.display =
+                    item.querySelector('.accordion-item-description').style.display === 'block' ? 'none' : 'block';
+
+                item.querySelector('.accordion-item-icon').textContent =
+                    item.querySelector('.accordion-item-icon').textContent === '+' ? '-' : '+';
+            });
+        });
+    </script>
+</body>
+
+</html>
