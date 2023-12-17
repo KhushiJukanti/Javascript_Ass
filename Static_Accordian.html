@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Static Accordiation</title>
+
+    <style>
+        h1 {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .accordion {
+            width: 100%;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .accordion-item-title {
+            background-color: #eee;
+            padding: 10px 15px;
+            display: block;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+
+        }
+
+        .accordion-item-title:hover {
+            background-color: #ddd;
+        }
+
+        .accordion-item-icon {
+            margin-left: 95%;
+            text-align: end;
+        }
+
+        .accordion-item-description {
+            padding: 10px 15px;
+            display: none;
+        }
+    </style>
+</head>
+<h1>Course Details.</h1>
+
+<body>
+
+    <div class="accordion">
+        <div class="accordion-item">
+            <button class="accordion-item-title">
+
+                MERN STACK
+                <i class="accordion-item-icon">+</i>
+            </button>
+            <div class="accordion-item-description">
+                <p>The MERN stack is a popular and powerful set of technologies for building web applications. MERN stands for MongoDB, Express.js, React, and Node.js, and it represents a full JavaScript stack for developing modern web applications.</p>
+                <p><b>1. MongoDB:</b> MongoDB is a NoSQL database that stores data in a flexible, JSON-like format called BSON. It is well-suited for handling large amounts of unstructured data. MongoDB is used as the database layer in the MERN stack.</p>
+                <p><b>2 .Express.js:</b> Express.js is a web application framework for Node.js. It simplifies the process of building robust and scalable web applications by providing a set of features for web and mobile applications. Express.js is used as the back-end framework in the MERN stack.</p>
+                <p><b>3. React:</b> React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components that update efficiently in response to data changes. React is used for building the front-end of the application in the MERN stack.</p>
+                <p><b>4. Node.js:</b> Node.js is a server-side JavaScript runtime that allows developers to build scalable and high-performance web applications. It enables server-side scripting and is used as the server environment in the MERN stack.</p>
+                <p>The MERN stack is known for its flexibility and efficiency, as developers can use JavaScript throughout the entire application, from the front end to the back end.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-item-title">
+
+                MEAN STACK
+                <i class="accordion-item-icon">+</i>
+            </button>
+            <div class="accordion-item-description">
+                <p>The MEAN stack is another popular set of technologies for building web applications. MEAN stands for MongoDB, Express.js, Angular, and Node.js. Similar to the MERN stack, the MEAN stack provides a full JavaScript solution for developing modern web applications.</p>
+                <p><b>1. MongoDB:</b> MongoDB is a NoSQL database that stores data in a flexible, JSON-like format called BSON. It is schema-less and designed for scalability and ease of development.</p>
+                <p><b>2. Express.js:</b> Express.js is a web application framework for Node.js. It simplifies the process of building robust and scalable web applications by providing a set of features for web and mobile applications. Express.js is used as the back-end framework in the MEAN stack, handling routing, middleware, and interacting with the MongoDB database.</p>
+                <p><b>3. Angular:</b> Angular is a front-end web application framework developed by Google. It allows developers to build dynamic, single-page web applications (SPAs) with a modular and component-based architecture. Angular is used for building the client-side (front end) of the application in the MEAN stack.</p>
+                <p><b>4. Node.js:</b> Node.js is a server-side JavaScript runtime that allows developers to build scalable and high-performance web applications. It enables server-side scripting and is used as the server environment in the MEAN stack.</p>
+                <p>The MEAN stack is known for its full-stack JavaScript development, enabling developers to use the same language (JavaScript) across the entire application, from the front end to the back end. It's a powerful choice for building real-time applications, single-page applications (SPAs), and scalable web applications. The choice between MERN and MEAN often depends on the specific requirements and preferences of the development team.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-item-title">
+
+                DATA SCIENCE
+                <i class="accordion-item-icon">+</i>
+            </button>
+            <div class="accordion-item-description">
+                <p>Data Science is a multidisciplinary field that involves extracting valuable insights and knowledge from diverse datasets. It encompasses a range of activities, including data collection, cleaning, exploratory analysis, and the development of statistical and machine learning models. The process aims to uncover patterns, make predictions, and provide actionable insights for decision-making. Key tools and languages in data science include Python, R, and various libraries and frameworks. Ethical considerations, continuous learning, and collaboration with domain experts are integral aspects of the practice. Applications of data science span numerous industries, contributing to advancements in areas such as healthcare, finance, e-commerce, and more, by leveraging data to inform strategic decisions and solve complex problems.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-item-title">
+
+                FULL STACK
+                <i class="accordion-item-icon">+</i>
+            </button>
+            <div class="accordion-item-description">
+                
+                <p>Full-stack development involves creating and maintaining both the front-end (user interface) and back-end (server-side logic and database) of a web application. Full-stack developers are proficient in a range of technologies, including HTML, CSS, JavaScript, various programming languages, and databases. They handle tasks such as user interface design, server-side logic implementation, database management, and API development. Full-stack developers contribute to the entire software development lifecycle, from planning and coding to testing and deployment. Their versatility makes them valuable contributors capable of building and maintaining complete web applications.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-item-title">
+
+                CYBER SECURITY
+                <i class="accordion-item-icon">+</i>
+            </button>
+            <div class="accordion-item-description">
+                <p>Cybersecurity focuses on protecting computer systems, networks, and data from unauthorized access, attacks, and damage. It involves implementing technologies and practices to ensure the confidentiality, integrity, and availability of information. Key elements include authentication, network and endpoint security, application security, data protection, incident response, security auditing, and compliance. Cybersecurity professionals work to detect and mitigate threats, educate users, and stay ahead of evolving risks. In a rapidly changing digital landscape, effective cybersecurity is critical for maintaining the security and trust of digital assets.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.querySelectorAll('.accordion-item').forEach(item => {
+        item.querySelector('.accordion-item-title').addEventListener('click', () => {
+            item.querySelector('.accordion-item-description').style.display =
+                item.querySelector('.accordion-item-description').style.display === 'block' ? 'none' : 'block';
+
+            item.querySelector('.accordion-item-icon').textContent =
+                item.querySelector('.accordion-item-icon').textContent === '+' ? '-' : '+';
+        });
+    });
+</script>
+
+</html>
