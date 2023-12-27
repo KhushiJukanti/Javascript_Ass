@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>YouTube</title>
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/SinthujanBalachandran/youtube-clone/master/youtube-logo-png-2061.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: none;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: transparent;
+            border-radius: 5px;
+        }
+
+        .sidebar:hover::-webkit-scrollbar-thumb {
+            background: #717171;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        h4 {
+            text-transform: uppercase;
+            margin-left: 20px;
+            font-size: .9rem;
+            color: #aaa;
+        }
+
+        i {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        p,
+        a {
+            font-size: 0.9rem;
+        }
+
+        hr {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 12px 0;
+        }
+
+
+        /* header starts here */
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #202020;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 25px;
+            padding-right: 40px;
+        }
+
+        .logo-img {
+            position: relative;
+            height: 50px;
+            width: 50px;
+        }
+
+        #logo-txt {
+            letter-spacing: -1.5px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            flex: 0 1 685px;
+            margin-left: 40px;
+        }
+
+        .search-container form {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-container input {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background-color: #121212;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .search-container .search {
+            min-width: 60px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            background-color: #313131;
+            outline: none;
+            border: none;
+        }
+
+        .search-container .mic {
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            outline: none;
+            border: none;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #181818;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-container i {
+            margin-left: 25px;
+        }
+
+        .profile-box {
+            position: relative;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 25px;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+
+        /* body container */
+
+        .body-container {
+            display: flex;
+            position: fixed;
+            height: calc(100vh - 60px);
+            top: 60px;
+        }
+
+
+        /* sidebar stars here */
+
+        .sidebar {
+            padding-top: 10px;
+            width: 240px;
+            background-color: #212121;
+            overflow-y: scroll;
+            color: #fff;
+        }
+
+        .sidebar-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            cursor: pointer;
+            height: 40px;
+        }
+
+        .sidebar-item:hover {
+            background-color: #4C4C4C;
+        }
+
+        .sidebar-item i {
+            margin-right: 24px;
+        }
+
+
+        /* main content starts here */
+
+        .content {
+            width: calc(100vw - 240px);
+        }
+
+        .chips-wrapper {
+            overflow-x: scroll;
+            background-color: #181818;
+            display: flex;
+            padding-left: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chips-wrapper::-webkit-scrollbar {
+            height: 0;
+        }
+
+        .chip {
+            margin: 12px 6px;
+            background-color: #373737;
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            white-space: nowrap;
+            cursor: pointer;
+            color: #fff;
+            transition: .5s;
+        }
+
+        .chip:hover {
+            background-color: #4D4D4D;
+        }
+
+
+        /* video container startrs here  */
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 18px;
+            padding: 20px 25px;
+            background-color: #181818;
+            overflow-y: scroll;
+            height: calc(100vh - 116px);
+        }
+
+        .video-content-cover {
+            position: relative;
+            transition: .5s;
+            transition-delay: .05s;
+        }
+
+        .video-content {
+            margin-bottom: 25px;
+            position: relative;
+            transition: .5s;
+            width: 100%;
+        }
+
+        .video-content:hover {
+            transform: scale(1.5);
+            z-index: 222;
+            position: absolute;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+            background-color: #202020;
+        }
+
+        .video-content-cover:hover {
+            transform: translateY(60px);
+            z-index: 999;
+        }
+
+        .video-content-cover:nth-child(4n+1):hover {
+            transform: translate(50px, 60px);
+            z-index: 999;
+        }
+
+        .video-content-cover:nth-child(4n+4):hover {
+            transform: translate(-30px, 60px);
+            z-index: 999;
+        }
+
+        .video-content:hover .video-details {
+            background-color: #202020;
+            padding: 10px;
+        }
+
+        .video-box {
+            position: relative;
+            width: auto;
+            height: 145px;
+            display: block;
+        }
+
+        .video-details {
+            display: flex;
+            color: #fff;
+            padding-top: 12px;
+        }
+
+        .video-content:hover .channel-logo {
+            min-width: 25px;
+            height: 25px;
+        }
+
+        .channel-logo {
+            position: relative;
+            min-width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .detail {
+            margin-left: 12px;
+        }
+
+        .video-content:hover .title {
+            font-size: .7rem;
+        }
+
+        .title {
+            font-size: .9rem;
+        }
+
+        .video-content:hover .channel-name {
+            font-size: .6rem;
+        }
+
+        .channel-name {
+            font-size: .8rem;
+            margin-top: 10px;
+            color: #aaa;
+        }
+
+        .video-content:hover .views-upload {
+            font-size: .6rem;
+        }
+
+        .views-upload {
+            display: flex;
+            font-size: .8rem;
+            color: #aaa;
+        }
+
+        .btn {
+            padding: 5px 0;
+            color: #aaa;
+            text-transform: uppercase;
+            width: 100%;
+            background-color: #373737;
+            text-align: center;
+            margin: 5px 0;
+            font-size: .6rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn i {
+            font-size: .7rem;
+            margin-right: 5px;
+            color: #aaa;
+        }
+
+        .hidden-content {
+            display: none;
+            padding: 5px 10px;
+            background-color: #202020;
+        }
+
+        .video-content:hover .hidden-content {
+            display: block;
+        }
+
+
+        /* responsive starts here */
+
+        @media (max-width:1200px) {
+            .sidebar {
+                width: 70px;
+                overflow-x: hidden;
+            }
+
+            .content {
+                width: calc(100vw - 70px);
+            }
+
+            .more {
+                display: none;
+            }
+        }
+
+        @media (max-width:1050px) {
+            .video-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width:820px) {
+            .video-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width:600px) {
+            .video-container {
+                grid-template-columns: 1fr;
+            }
+
+            .search-container,
+            .ri-grid-fill {
+                display: none;
+            }
+
+            .video-container {
+                grid-gap: 10px;
+                padding: 10px 10px;
+            }
+
+            .header {
+                padding-right: 10px;
+            }
+
+            .video-content:hover {
+                transform: none;
+                position: relative;
+                box-shadow: none;
+                background-color: #181818;
+            }
+
+            .video-content-cover:hover {
+                transform: none;
+            }
+
+            .video-content-cover:nth-child(4n+1):hover {
+                transform: none;
+            }
+
+            .video-content-cover:nth-child(4n+4):hover {
+                transform: none;
+            }
+
+            .video-content:hover .video-details {
+                background-color: #181818;
+                padding: 0px;
+                padding-top: 12px;
+            }
+
+            .video-content:hover .channel-logo {
+                min-width: 35px;
+                height: 35px;
+            }
+
+            .video-content:hover .title {
+                font-size: .9rem;
+            }
+
+            .video-content:hover .channel-name {
+                font-size: .8rem;
+            }
+
+            .video-content:hover .views-upload {
+                font-size: .8rem;
+            }
+
+            .video-content:hover .hidden-content {
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <i class="ri-menu-line"></i>
+            <div class="logo">
+                <div class="logo-img">
+                    <img src="https://raw.githubusercontent.com/SinthujanBalachandran/youtube-clone/master/youtube-logo-png-2061.png" alt="">
+                </div>
+                <h1 id="logo-txt">YouTube</h1>
+            </div>
+        </div>
+        <div class="search-container">
+            <form action="">
+                <input type="text" placeholder="Search">
+            </form>
+            <button class="search"><i class="ri-search-line"></i></button>
+            <button class="mic"><i class="ri-mic-fill"></i></button>
+
+        </div>
+        <div class="profile-container">
+            <i class="ri-video-add-line"></i>
+            <i class="ri-grid-fill"></i>
+            <i class="ri-notification-4-line"></i>
+            <div class="profile-box">
+                <img src="https://yt3.ggpht.com/yti/AGOGRCrztjbOhWvAIWVDEaNyjLbyxMb_AlyG-D6Ndfxgdg=s88-c-k-c0x00ffffff-no-rj" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="body-container">
+        <div class="sidebar">
+            <div class="sidebar-items">
+                <a class="sidebar-item"><i class="ri-home-5-line"></i></i>Home</a>
+                <a class="sidebar-item"><i class="ri-compass-3-line"></i>Explore</a>
+                <a class="sidebar-item"><i class="ri-wireless-charging-line"></i>Shorts</a>
+                <a class="sidebar-item"><i class="ri-rss-line"></i>Subscription</a>
+                <hr>
+                <a class="sidebar-item"><i class="ri-links-line"></i>Library</a>
+                <a class="sidebar-item"><i class="ri-history-line"></i>History</a>
+                <a class="sidebar-item"><i class="ri-video-line"></i>Your videos</a>
+                <a class="sidebar-item"><i class="ri-time-line"></i>Watch later</a>
+                <a class="sidebar-item"><i class="ri-play-list-2-line"></i>All videos</a>
+                <a class="sidebar-item"><i class="ri-arrow-down-s-line"></i>Show more</a>
+                <hr>
+                <h4 class="more">More from youtube</h4>
+                <a class="sidebar-item"><i class="ri-keyboard-box-line"></i>Gaming</a>
+                <a class="sidebar-item"><i class="ri-live-line"></i>Live</a>
+                <a class="sidebar-item"><i class="ri-award-line"></i>Sports</a>
+                <hr>
+                <a class="sidebar-item"><i class="ri-settings-5-line"></i>Settings</a>
+                <a class="sidebar-item"><i class="ri-flag-line"></i>Report history</a>
+                <a class="sidebar-item"><i class="ri-question-line"></i>Help</a>
+                <a class="sidebar-item"><i class="ri-feedback-line"></i>Send feedback</a>
+
+            </div>
+
+        </div>
+        <div class="content">
+            <div class="chips-wrapper">
+                <div class="chip">
+                    <p>All</p>
+                </div>
+                <div class="chip">
+                    <p>CSS</p>
+                </div>
+                <div class="chip">
+                    <p>User interface design</p>
+                </div>
+                <div class="chip">
+                    <p>User interface design</p>
+                </div>
+                <div class="chip">
+                    <p>User interface design</p>
+                </div>
+                <div class="chip">
+                    <p>User interface design</p>
+                </div>
+                <div class="chip">
+                    <p>User interface design</p>
+                </div>
+                <div class="chip">
+                    <p>User interface design</p>
+                </div>
+                <div class="chip">
+                    <p>User interface design</p>
+                </div>
+            </div>
+            <div class="video-container">
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://raw.githubusercontent.com/SinthujanBalachandran/youtube-clone/master/1.png" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://raw.githubusercontent.com/SinthujanBalachandran/youtube-clone/master/7.png" alt="">
+
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Complete responsive website design</h3>
+                                <div class="channel-name">iMe Creative</div>
+                                <div class="views-upload">
+                                    <div class="views">281K views .</div>
+                                    <div class="upload">1 year ago</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/_YOxtckXadY/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDnGpsVBCKhnQuhXwExxS2TLrTvfw" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.googleusercontent.com/rPoRRDAbbFQpeqCZFdndLgMRCm6KGS90QD0x7PlYaHoSXVG74ASmPwY8n3I1GVqD1lr8cIhKfA=s176-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Tom and Jerry - Safety second</h3>
+                                <div class="channel-name">MovieCon</div>
+                                <div class="views-upload">
+                                    <div class="views">4M views .</div>
+                                    <div class="upload">5 years ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/Mwbc6rtxXf4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLACK2VwgOny9kmFykLS-a6ODrCQ5g" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.ggpht.com/86KOCPqlKovomQrc1pXh_amM7L41_Fb3DFXVJpQO_hvZAtF_wrlyS3Qx_pblYCbaKdiqEsvk=s88-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Jamal Jamaloo || Song Animal</h3>
+                                <div class="channel-name">Proud Records!</div>
+                                <div class="views-upload">
+                                    <div class="views">4.7 views .</div>
+                                    <div class="upload">1 month ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/TFBm3u_ryFc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApAB5B9gDZWjZ65yJIMYS7znalcQ" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.ggpht.com/cwRc-xkFPDD20DEVVPD7WXcxhCdSXJbBljFep64Co-1ex4ufc4LCAfhrDBOtDdq-HfZT1lHG9S0=s68-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Student Web Series || season Finale</h3>
+                                <div class="channel-name">Shanmukh Jaswanth</div>
+                                <div class="views-upload">
+                                    <div class="views">4M views .</div>
+                                    <div class="upload">2 day ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/h3RXI92IUXg/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBvaS1DNFeOFm1ORaVZ6ijzP3DIVQ" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.ggpht.com/tokv0pq1n8Rr-5yaT4wNrI1tcpyMW8XGMA9eWdMBnGV1A7yMKqSYRtBQhy3wwoTfuWUW0qupZGc=s68-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Raksha Manthri in Jammu || Rajnath Singh</h3>
+                                <div class="channel-name">Mirror Now</div>
+                                <div class="views-upload">
+                                    <div class="views">5.7K views .</div>
+                                    <div class="upload">1 day ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/Ucusm4R8WpA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA7UVKt1am9FppxA8w0FAHtWyPtrw" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.ggpht.com/ytc/AIf8zZSVcpA5Hlxxs8SM4X489lE9sHd3UEiry7jDNmjM3bI=s68-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">CM Revanth Abhaya Hastham Poster || Teenmar news</h3>
+                                <div class="channel-name">V6 News Telugu</div>
+                                <div class="views-upload">
+                                    <div class="views">78K views .</div>
+                                    <div class="upload">3 hours ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/uE925hp9KDk/hq720_custom_1.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIGMoMzAP&rs=AOn4CLAhSzon4Uv5iL3dgmQEwBZdQqaF5A" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.ggpht.com/ytc/AIf8zZRr-XxwSuOW9kwN9wXTxhmT-I3A1dhcYKmiBz4h9g=s68-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Top 12 React Interview Qustions🔥Freshers and Experienced</h3>
+                                <div class="channel-name">Akshay Shaini</div>
+                                <div class="views-upload">
+                                    <div class="views">32K views .</div>
+                                    <div class="upload">6 days ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/tOJgV7LPDO4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDemSnBGWEUSKazX62HkQLTMg2gEg" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.ggpht.com/ytc/AIf8zZSQnlAIu4DFVmyZbqiyXtZRWqJGF6fcG2QnfFR8lw=s68-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Dhee Celebraty special || 20 Dec 2023</h3>
+                                <div class="channel-name">ETV Dhee</div>
+                                <div class="views-upload">
+                                    <div class="views">80K views .</div>
+                                    <div class="upload">1 day ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/4097PpxL3AA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD8IJGzYKb_Y1jJ9R_OVugp6lnw2A" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.ggpht.com/SYe4TpX0ygqZQD2sxvQuh4kEOGrX_FsjU72hAu_pVe0OsXAkjYP0xUHOP18wYJNZ1owLEAaIvg=s68-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Responsive Admin Dashboard || using Html&CSS</h3>
+                                <div class="channel-name">ime creative</div>
+                                <div class="views-upload">
+                                    <div class="views">5K views .</div>
+                                    <div class="upload">1 year ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content-cover">
+                    <div class="video-content">
+                        <a href="https://www.youtube.com/watch?v=FNhjbNQ8Sik" class="video-box">
+                            <img src="https://i.ytimg.com/vi/qWY25e02BZs/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCS4G51oi7zsxw0sPFQeZEePR2b5Q" alt="">
+                        </a>
+                        <div class="video-details">
+                            <div class="channel-logo">
+                                <img src="https://yt3.ggpht.com/Sjv8m5d3j8d2lteyj73UuQzO6rB2mVJGvnRLWXXHFVOQYTa5kChJ2WVSU22WEaD88sByQMyiCQ=s68-c-k-c0x00ffffff-no-rj" alt="">
+                            </div>
+                            <div class="detail">
+                                <h3 class="title">Tailwind CSS || display table content</h3>
+                                <div class="channel-name">simonswiss</div>
+                                <div class="views-upload">
+                                    <div class="views">20K views .</div>
+                                    <div class="upload">14 days ago</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hidden-content">
+                            <div class="btn"><i class="ri-time-line"></i>Watch later</div>
+                            <div class="btn"><i class="ri-play-list-2-line"></i>Add to queue</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript code goes here
+
+        // Toggle sidebar
+        const menuIcon = document.querySelector('.ri-menu-line');
+        const sidebar = document.querySelector('.sidebar');
+
+        menuIcon.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+
+        // Show notification when clicking "Watch later" button
+        const watchLaterButtons = document.querySelectorAll('.btn');
+
+        watchLaterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Added to Watch Later!');
+            });
+        });
+    </script>
+</body>
+
+</html>
