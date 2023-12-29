@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact List Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            margin: 5px;
+        }
+
+        #contactList {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact {
+            border: 1px solid #000;
+            margin: 5px;
+            padding: 10px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Contact List Management</h1>
+    <button id="register">Register</button>
+    <button id="login">Login</button>
+    <button id="create">Create Contact</button>
+
+    <div id="contactList">
+        <!-- Contact List will be dynamically added here -->
+    </div>
+
+    <script>
+        document.getElementById('register').addEventListener('click', function () {
+            // Display the registration page
+        });
+
+        document.getElementById('login').addEventListener('click', function () {
+            // Display the login page
+        });
+
+        document.getElementById('create').addEventListener('click', function () {
+            // Display the create contact page
+        });
+
+        // Dynamically create contacts
+        const contacts = [
+            { name: 'John Doe', phone: '1234567890', email: 'john.doe@example.com' },
+            // ...
+        ];
+
+        contacts.forEach(contact => {
+            const contactDiv = document.createElement('div');
+            contactDiv.className = 'contact';
+
+            contactDiv.innerHTML = `
+    <h2>${contact.name}</h2>
+    <p>Phone: ${contact.phone}</p>
+    <p>Email: ${contact.email}</p>
+ `;
+
+            contactDiv.addEventListener('click', function () {
+                // Show the contact actions: edit, delete, share
+            });
+
+            document.getElementById('contactList').appendChild(contactDiv);
+        });
+    </script>
+</body>
+
+</html>
