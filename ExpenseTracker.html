@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Expense Tracker</title>
+   
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            background-color: #f2f2f2;
+            padding: 5px 10px;
+        }
+
+        .income {
+            color: green;
+        }
+
+        .expense {
+            color: red;
+        }
+
+        .delete-button {
+            background-color: #ff3333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Expense Tracker</h1>
+    <form id="transaction-form">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount"><br>
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select><br>
+        <button type="submit">Add Transaction</button>
+    </form>
+    <h2>Balance: <span id="balance">0</span></h2>
+    <h2>Transactions:</h2>
+    <ul id="transaction-list"></ul>
+    <script>
+        const transactionForm = document.getElementById('transaction-form');
+        const descriptionInput = document.getElementById('description');
+        const amountInput = document.getElementById('amount');
+        const typeSelect = document.getElementById('type');
+        const transactionList = document.getElementById('transaction-list');
+        const balanceSpan = document.getElementById('balance');
+
+        let transactions = [];
+
+        function addTransaction(description, amount, type) {
+            const transaction = {
+                id: Date.now(),
+                description,
+                amount: Number(amount),
+                type
+            };
+            transactions.push(transaction);
+            updateBalance();
+            renderTransactions();
+        }
+
+        function deleteTransaction(id) {
+            transactions = transactions.filter(transaction => transaction.id !== id);
+            updateBalance();
+            renderTransactions();
+        }
+
+        function updateBalance() {
+            let balance = 0;
+            transactions.forEach(transaction => {
+                if (transaction.type === 'income') {
+                    balance += transaction.amount;
+                } else {
+                    balance -= transaction.amount;
+                }
+            });
+            balanceSpan.textContent = balance;
+        }
+
+        function renderTransactions() {
+            transactionList.innerHTML = '';
+            transactions.forEach(transaction => {
+                const li = document.createElement('li');
+                li.classList.add(transaction.type);
+                li.textContent = `${transaction.description} - ${transaction.amount} ${transaction.type}`;
+                
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', () => deleteTransaction(transaction.id));
+                
+                li.appendChild(deleteButton);
+                
+                transactionList.appendChild(li);
+            });
+        }
+
+        transactionForm.addEventListener('submit', e => {
+            e.preventDefault();
+            if (!descriptionInput.value || !amountInput.value || !typeSelect.value) return;
+            addTransaction(descriptionInput.value, amountInput.value, typeSelect.value);
+            descriptionInput.value = '';
+            amountInput.value = '';
+        });
+    </script>
+</body>
+
+</html>
