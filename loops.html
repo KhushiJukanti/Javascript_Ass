@@ -50,7 +50,7 @@
         // for (let key in employee) {
         //     console.log(key)
         //     console.log(key, employee[key])
-            
+
         // }
 
         // // for-of loop...
@@ -58,12 +58,30 @@
         // for(let x of cars){
         //     console.log(x)
         // }
-        
+
         // while loop...
 
-        let i = 0;
-        while(i<20){
-            console.log("The nbr is" + i)
+        // let i = 0;
+        // while(i<20){
+        //     console.log("The nbr is" + i)
+        // }
+
+        let n = Number(prompt("Enter number"))
+        let isPrime = true;
+        let i = 2
+        while (i < n) {
+            if (n % i === 0) {
+                isPrime = false;
+                break;
+
+            } else {
+                isPrime = true;
+            }
+        }
+        if (isPrime === true) {
+            console.log("number is prime")
+        } else {
+            console.log("number is not prime")
         }
 
 

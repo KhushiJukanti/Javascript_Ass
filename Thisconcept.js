@@ -34,10 +34,46 @@
 // parent()
 
 
-let user1 = {
-    name:"test1",
-    show:function(){
-        console.log(this)
-    }
-}
-user1.show()
+// let user1 = {
+//     name:"test1",
+//     show:function(){
+//         console.log(this)
+//     }
+// }
+// user1.show()
+
+
+// 1.Gobal Context--------------------
+
+console.log(this === window); // true in a browser
+// 2.Function context ----------------
+
+function greet() {
+    console.log(this.name);
+  }
+  
+  let person = {
+    name: 'John',
+    sayHello: greet
+  };
+  
+  person.sayHello(); // Output: John
+
+//   3. Constructer Context-----------------
+
+function Person(name) {
+    this.name = name;
+  }
+  
+  let john = new Person('John');
+  console.log(john.name); // Output: John
+
+  
+//   4.Event handler contaxt------------------
+
+<button id="myButton">Click me</button>
+
+document.getElementById('myButton').addEventListener('click', function() {
+    console.log(this.id); // Output: myButton
+  });
+  

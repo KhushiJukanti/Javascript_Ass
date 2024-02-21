@@ -25,17 +25,17 @@
 // dummy('gdsfgdshb')
 
 // ..........................................................
-// function ordernow(a){
-//     console.log("placing order")
+function ordernow(a){
+    console.log("placing order")
 
-//     paynow()
-// }                                             // placing order
-// functions.js:30                                //paying now
-// function paynow(){
-//     console.log("paying now")
+    paynow()
+}                                             // placing order
+//paying now
+function paynow(){
+    console.log("paying now")
 
-// }
-// ordernow(paynow)
+}
+ordernow(paynow)
 
 // ................................................................
 // function greet(){

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .car-card {
+            width: 300px;
+            background-color: #fff;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Car Rental Service</h1>
+    </header>
+
+    <section id="carCatalog">
+        <!-- Car catalog content goes here -->
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Car Rental Service</p>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const carCatalog = document.getElementById("carCatalog");
+
+            // Mock car data
+            const mockData = [
+                { id: 1, name: "Car A", availability: "Available", pricing: "$50/day", hourlyCharges: "$10", miscellaneous: "Description A" },
+                { id: 2, name: "Car B", availability: "Booked", pricing: "$60/day", hourlyCharges: "$12", miscellaneous: "Description B" },
+                // Add more cars as needed
+            ];
+
+            // Update car catalog section with mock data
+            mockData.forEach(car => {
+                const carCard = document.createElement("div");
+                carCard.classList.add("car-card");
+
+                carCard.innerHTML = `
+                <h2>${car.name}</h2>
+                <p>Availability: ${car.availability}</p>
+                <p>Pricing: ${car.pricing}</p>
+                <p>Hourly Charges: ${car.hourlyCharges}</p>
+                <p>Miscellaneous: ${car.miscellaneous}</p>
+                <button onclick="reserveCar('${car.id}')">Reserve Now</button>
+            `;
+
+                carCatalog.appendChild(carCard);
+            });
+
+            // Function to handle car reservation
+            window.reserveCar = function (carId) {
+                // Implement the reservation logic, e.g., open a reservation form
+                alert(`Reserving car with ID: ${carId}`);
+            };
+        });
+    </script>
+
+
+
+</body>
+
+</html>
