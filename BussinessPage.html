@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Business Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Global Styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("http://careerx.club/wp-content/uploads/2022/08/6068294-scaled.jpg");
+        background-size: cover;
+    }
+
+    nav {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* Hero Section */
+    .hero {
+        background-image: url("http://careerx.club/wp-content/uploads/2022/08/6068294-scaled.jpg");
+        background-size: cover;
+        color: black;
+        text-align: center;
+        margin-top: 100px;
+        /* padding: 100px 0; */
+    }
+
+    /* Sections */
+    section {
+        padding: 50px 0;
+        text-align: center;
+    }
+
+    section h2 {
+        color: #333;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .services-list {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    .services-list li {
+        text-align: center;
+    }
+
+    .service-button {
+        background-color: orange;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .service-button:hover {
+        background-color: darkorange;
+    }
+
+    .news {
+        font-size: 18px;
+        /* Increase font size */
+    }
+
+    .news h2 {
+        color: #333;
+        /* Change title color */
+    }
+
+    .news article {
+        margin-bottom: 20px;
+        /* Add space between articles */
+    }
+
+    .news h3 {
+        font-size: 24px;
+        /* Increase font size for news titles */
+        color: #444;
+        /* Change news title color */
+    }
+
+    .news p {
+        color: #666;
+        /* Change paragraph color */
+    }
+</style>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#news">Latest News</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#careers">Careers</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://careerx.club/wp-content/uploads/2022/08/a-768x109.png" alt="Hero Image">
+        <h1>Fast Track Your Career</h1>
+        <p>Get Trained for top tech jobs and Get Hired into top companies with our exclusive careerX cohorts</p>
+        <button style="background-color: #FF840A;     font-size: 15px;
+        font-weight: 700;
+        fill: #FFFFFF;
+        color: #FFFFFF;
+        background-color: #FF840A;
+        border-radius: 10px 10px 10px 10px;
+        padding: 15px 45px 15px 45px;">start now</button>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>India's #1 cohort learning platform to upskill students by providing plethora of opportunities.</p>
+
+        <p>At CareerX Club, we are determined to transform youngsters into highly skilled tech professionals with our
+            customised career based cohorts. </p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <ul class="services-list">
+            <li>
+                <span>
+                    <button class="service-button">MERN STACK</button>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <button class="service-button">MEAN STACK</button>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <button class="service-button">FULL STACK</button>
+                </span>
+            </li>
+            <!-- Add more services as needed -->
+        </ul>
+    </section>
+
+
+    <!-- Latest News Section -->
+    <section id="news" class="news">
+        <h2>Latest News</h2>
+        <article>
+            <h3>News Title</h3>
+            <p>Our Students Are Hired By 100+ Companies</p>
+        </article>
+        <!-- Add more news articles as needed -->
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Email:info@careerx.club</p>
+        <p>Phone: +918367721627</p>
+        <p>Address: CareerX Club, Plot 10, 8, Rd Number 5, 2nd Floor, IDA, Nacharam, Hyderabad, Telangana 500076</p>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="careers">
+        <h2>Careers</h2>
+        <p>Explore exciting career opportunities with us!</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Your Business. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
